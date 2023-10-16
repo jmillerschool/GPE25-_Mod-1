@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : ParentCotroller
+[System.Serializable]
+
+public class PlayerController : Controller
 {
     public KeyCode moveForwardKey;
     public KeyCode moveBackwardKey;
@@ -12,6 +14,17 @@ public class PlayerController : ParentCotroller
     // Start is called before the first frame update
     public override void Start()
     {
+        // If we have a GameManager
+        if (GameManager.instance != null)
+        {
+            // And it Tracks the player(s)
+            if (GameManager.instance.player != null)
+            {
+                //Register with the GameManager
+                GameManager.instance.player.Add(this);
+            }
+        }
+        
         // Run the Start() function from the parent (base) class
         base.Start();
     }
@@ -45,5 +58,14 @@ public class PlayerController : ParentCotroller
             pawn.RotateCounterClockwise();
         }
     }
-
+    public void OnDestroy()
+    {
+        // IF we have a GameManager
+        if (GameManager.instance != null)
+        {
+            // And It tracks the player(s)
+            //Deregister with the GameManager
+            GameManager.instance.player.Remove(this);
+        }
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankPawn : ParentPawn
+public class TankPawn : Pawn
 {
     // Start is called before the first frame update
     public override void Start()
@@ -17,18 +17,43 @@ public class TankPawn : ParentPawn
     }
     public override void MoveForward()
     {
-        Debug.Log("Move Forward");
+        if (mover != null)
+        {
+            mover.Move(transform.forward, moveSpeed);
+        }else
+        {
+            Debug.LogWarning("Warning :No Mover in TankPawn.MoverForward()!");
+        }
+        
     }
     public override void MoveBackward()
+        
     {
-        Debug.Log("Move Backward");
+        if (mover != null)
+        {
+            mover.Move(transform.forward, -moveSpeed);
+        }else
+        {
+            Debug.LogWarning("Warning: No Mover in TankPawn.MoveBack()!");
+        }
     }
     public override void RotateClockwise()
     {
-        Debug.Log("Rotate Clockwise");
+        if (mover != null)
+        {
+            mover.Rotate(turnSpeed);
+        }
+        else
+            Debug.LogWarning("Warning: No Mover in TankPawn.RotateClockwise()!");
     }
     public override void RotateCounterClockwise()
     {
-        Debug.Log("Rotate counter- Clockwise");
+        if (mover != null)
+        {
+            mover.Rotate(-turnSpeed);
+        }else
+        {
+            Debug.LogWarning("Warning: No Mover in TankPawn.RotateCounterClockwise()!");
+        }
     }
 }

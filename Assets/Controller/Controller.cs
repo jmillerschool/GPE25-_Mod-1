@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ParentCotroller : MonoBehaviour
+[System.Serializable]
+
+public abstract class Controller : MonoBehaviour
 {
     //Variable to hold our Pawn
-    public ParentPawn pawn; 
+    public Pawn pawn; 
 
     // Start is called before the first frame update
     public virtual void Start()
