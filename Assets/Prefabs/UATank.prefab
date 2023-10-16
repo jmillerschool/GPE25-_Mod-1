@@ -103,7 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 19
-  turnSpeed: 20
+  turnSpeed: 200
+  fireRate: 3
   mover: {fileID: 0}
 --- !u!135 &367143876751250820
 SphereCollider:
