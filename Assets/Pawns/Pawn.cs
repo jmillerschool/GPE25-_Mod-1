@@ -6,12 +6,19 @@ public abstract class Pawn : MonoBehaviour
 {
     //Variable for move speed
     public float moveSpeed;
+
     //Variable for turn speed
     public float turnSpeed;
+
     //Variable for fireRate;
     public float fireRate;
+
+    // Variable for reciprocal
+    public float secondsPerShot = 1 / shotsPerSecond;
+
     //Variable to hold our Mover
     public Mover mover;
+   
 
     // Start is called before the first frame update
     public virtual void Start()

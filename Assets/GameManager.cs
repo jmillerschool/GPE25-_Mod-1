@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     //Prefabs
     public GameObject playerControllerPrefab;
     public GameObject tankPawnPrefab;
+    public GameObject ShellPrefab;
 
+    //List that holds our player(s)
     public List<PlayerController> player;
 
     private void Start()
