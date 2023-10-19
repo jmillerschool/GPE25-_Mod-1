@@ -14,7 +14,7 @@ public abstract class Pawn : MonoBehaviour
     public float fireRate;
 
     // Variable for reciprocal
-    public float secondsPerShot = 1 / shotsPerSecond;
+    //public float secondsPerShot = 1 / shotsPerSecond;
 
     //Variable to hold our Mover
     public Mover mover;
