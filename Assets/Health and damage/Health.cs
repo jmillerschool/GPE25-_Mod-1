@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
 
     public void Die (Pawn source)
     {
+        Debug.Log(" You Died ");
         Destroy(gameObject);
     }
 
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour
         currentHealth = currentHealth - amount;
         Debug.Log(source.name + " did " + amount + " damage to " + gameObject.name);
         currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
+        
         if (currentHealth <= 0)
         {
             Die (source);
@@ -28,8 +30,9 @@ public class Health : MonoBehaviour
     public void Heal (float amount, Pawn source)
     {
         currentHealth = currentHealth + amount;
-        Debug.Log(source.name + " got " + amount + " Healing " + gameObject.name);
+        Debug.Log(source.name + " Healed " + amount + " points to " + gameObject.name);
         currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
+       
         if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;

@@ -13,17 +13,30 @@ public abstract class Pawn : MonoBehaviour
     //Variable for fireRate;
     public float fireRate;
 
-    // Variable for reciprocal
-    //public float secondsPerShot = 1 / shotsPerSecond;
+    // Variable for our shell prefab
+    public GameObject shellPrefab;
+
+    // Variable for our firing force
+    public float fireForce;
+
+    // Variable for our damage done
+    public float damageDone;
+
+    // Variable for how long our bullets survive if they dont collide
+    public float shellLifespan;
 
     //Variable to hold our Mover
     public Mover mover;
-   
-
+      
+    //Variable to hold our shooter
+    public Shooter shooter;
+      
     // Start is called before the first frame update
     public virtual void Start()
     {
         mover = GetComponent<Mover>();
+
+        shooter = GetComponent<Shooter>();
     }
 
     // Update is called once per frame
@@ -31,8 +44,14 @@ public abstract class Pawn : MonoBehaviour
     {
         
     }
+
+    public abstract void RotateTowards(Vector3 targetPosition);
+
     public abstract void MoveForward();
     public abstract void MoveBackward();        
     public abstract void RotateClockwise();
     public abstract void RotateCounterClockwise();
+    
+
+    public abstract void Shoot();
 }

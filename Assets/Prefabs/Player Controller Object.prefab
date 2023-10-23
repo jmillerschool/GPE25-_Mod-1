@@ -47,5 +47,6 @@ MonoBehaviour:
   pawn: {fileID: 0}
   moveForwardKey: 273
   moveBackwardKey: 274
-  rotateClockwiseKey: 276
-  rotateCounterClockwiseKey: 275
+  rotateClockwiseKey: 275
+  rotateCounterClockwiseKey: 276
+  shootkey: 32

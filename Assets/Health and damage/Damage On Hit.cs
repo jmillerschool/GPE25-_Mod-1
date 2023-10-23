@@ -31,6 +31,9 @@ public class DamageOnHit : MonoBehaviour
             otherHealth.TakeDamage(damageDone, owner);
         }
 
+        // partical
+        
+
         // Destroy ourselfs, whether we did damage or not 
         Destroy(gameObject);
     }
