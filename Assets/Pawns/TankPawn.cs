@@ -97,4 +97,20 @@ public class TankPawn : Pawn
             Debug.LogWarning("Warning: No Mover in TankPawn.RotateCounterClockwise()!");
         }
     }
+
+    public override void MakeNoise()
+    {
+        if (noiseMaker != null)
+        {
+            noiseMaker.volumeDistance = noiseMakerVolume;
+        }
+    }
+
+    public override void StopNoise()
+    {
+        if (noiseMaker != null)
+        {
+            noiseMaker.volumeDistance = 0;
+        }
+    }
 }

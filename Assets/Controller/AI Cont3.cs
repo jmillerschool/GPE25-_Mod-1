@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIController : Controller
+public class AICont3 :  Controller
 {
     public enum AIState { Patrol, Guard, Chase, Attack, Flee };
     public AIState currentState;
@@ -12,17 +12,17 @@ public class AIController : Controller
     public float waypointStopDistance;
     public float hearingDistance;
     public float fieldOfView;
-    
+
     private int currentWaypoint = 0;
     private float lastStateChangeTime;
-    
-    
+
+
     // Start is called before the first frame update
     public override void Start()
     {
-       
+
         ChangeState(AIState.Chase);
-        
+
         base.Start();
     }
 
@@ -30,7 +30,7 @@ public class AIController : Controller
     public override void Update()
     {
         ProcessInputs();
-       
+
         // Run the parent (Base) update
         base.Update();
     }
@@ -38,52 +38,37 @@ public class AIController : Controller
     public override void ProcessInputs()
     {
         switch (currentState)
-        {
-            
-            case AIState.Guard:
-                //Do work for guard
-                DoGuardState();
-                // Check for transiton
-                if(IsDistanceLestThan(target, 14))
-                {
-                    ChangeState(AIState.Chase);
-                }
-                
-                break;
-            
+        {       
+                                                     
             case AIState.Chase:
                 // Do work for chase
-                // Could use IsCanSee and IsCanHear instead
-                if(IsHasTarget())
+                               
+                if (IsHasTarget())
                 {
                     DoChaseState();
                 }
                 else
                 {
-                    TargetPlayerOne();
+                     TargetPlayerOne();
                 }
-
+                                                   
                 //Check for transitions
-                if (IsDistanceLestThan(target,5))
+                if (IsDistanceLestThan(target, 7))
                 {
                     ChangeState(AIState.Attack);
                 }
-
-                if(!IsDistanceLestThan(target, 14))
-                {
-                    ChangeState(AIState.Guard);
-                }
+                
                 break;
 
             case AIState.Attack:
                 // Do work for Attack
                 DoAttackState();
-                if(!IsDistanceLestThan(target,5))
+                if (!IsDistanceLestThan(target, 7))
                 {
                     ChangeState(AIState.Chase);
                 }
-                break;
-                             
+                break;           
+
         }
     }
 
@@ -94,7 +79,7 @@ public class AIController : Controller
         {
             // Than seek out that waypoint
             Seek(waypoint[currentWaypoint]);
-            
+
             // If we are close enough than increment to next waypoint
             if (Vector3.Distance(pawn.transform.position, waypoint[currentWaypoint].position) < waypointStopDistance)
             {
@@ -140,7 +125,7 @@ public class AIController : Controller
         Vector3 vectorAwayFromTarget = -vectorToTarget;
         Vector3 fleeVector = vectorAwayFromTarget.normalized * fleeDistance;
         Seek(pawn.transform.position + fleeVector);
-        float targetDistance = Vector3.Distance( target.transform.position, pawn.transform.position );
+        float targetDistance = Vector3.Distance(target.transform.position, pawn.transform.position);
         float percentOfFleeDistance = targetDistance / fleeDistance;
         percentOfFleeDistance = Mathf.Clamp01(percentOfFleeDistance);
         float flippedPercentOfFleeDistance = 1 - percentOfFleeDistance;
@@ -152,19 +137,19 @@ public class AIController : Controller
     }
 
     // Seek Functons
-    public void Seek (GameObject target)
+    public void Seek(GameObject target)
     {
         //RotateTowards the target
         pawn.RotateTowards(target.transform.position);
         // Move forward toward the target
         pawn.MoveForward();
-        
+
     }
     public void Seek(Transform targetTransform)
     {
         // seek ther position of our target Transform
         Seek(targetTransform.position);
-        
+
     }
     public void Seek(Vector3 targetPosition)
     {
@@ -242,7 +227,7 @@ public class AIController : Controller
             //If this one is closer than the closest
             if (Vector3.Distance(pawn.transform.position, tank.transform.position) <= closestTankDistance)
             {
-                closestTank = tank;                
+                closestTank = tank;
             }
         }
 
@@ -281,7 +266,7 @@ public class AIController : Controller
         {
             // Otherwise we are too far away to hear them
             return false;
-        }        
+        }
     }
     protected bool IsCanSee(GameObject target)
     {
@@ -291,7 +276,7 @@ public class AIController : Controller
         // Find the angle between the direction our agent is facing (Forward if local space) and the vector to the target
         float angleToTarget = Vector3.Angle(agentToTargetVector, pawn.transform.position);
         Debug.Log(angleToTarget);
-        
+
         //Fi that agle is less than our field of view
         if (angleToTarget < fieldOfView)
         {
