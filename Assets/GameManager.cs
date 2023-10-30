@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     //List that holds our player(s)
     public List<PlayerController> player;
+    public int spawnedPowerups;
+    public int maxPowerups;
+
 
     private void Start()
     {
@@ -39,6 +42,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // Update is called every frame, if the MonoBehaviour is enabled
+    private void Update()
+    {
+        if (spawnedPowerups > maxPowerups)
+        {
+
+        }
+    }
+
+
 
     public void SpawnPlayer()
     {
