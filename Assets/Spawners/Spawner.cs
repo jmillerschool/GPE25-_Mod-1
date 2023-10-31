@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     private float nextSpawnTime;
     public float spawnDelay;
     public Transform tf;
-    private GameObject spawnedPickup;
+    public GameObject spawnedPickup;
 
     // Start is called before the first frame update
     void Start()
