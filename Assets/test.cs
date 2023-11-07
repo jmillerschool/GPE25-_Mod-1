@@ -10,7 +10,7 @@ public class test : MonoBehaviour
     public KeyCode callCreditScreenState;
     public KeyCode callGamePlayState;
     public KeyCode callGameOverScreenState;
-    GameManager gameManager;
+    public GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -51,11 +51,6 @@ public class test : MonoBehaviour
         {
             gameManager.ActivateGameOverScreen();
         }
-
-
-
-
-
 
 
     }

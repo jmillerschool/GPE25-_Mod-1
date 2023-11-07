@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 5
+  fillAmount: {fileID: 0}
 --- !u!114 &815828849183734874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +160,7 @@ MonoBehaviour:
   damageDone: 2
   shellLifespan: 7
   noiseMakerVolume: 1
+  controller: {fileID: 696709623299340257, guid: 9177d188b925fcf4aa867f47ccfbd8ac, type: 3}
   mover: {fileID: 2634181790633617606}
   shooter: {fileID: 0}
   noiseMaker: {fileID: 0}
@@ -249,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
+  fillAmount: {fileID: 0}
 --- !u!114 &-2794897598133948292
 MonoBehaviour:
   m_ObjectHideFlags: 0

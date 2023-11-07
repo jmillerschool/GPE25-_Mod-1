@@ -7,12 +7,17 @@ using UnityEngine;
 public abstract class Controller : MonoBehaviour
 {
     //Variable to hold our Pawn
-    public Pawn pawn; 
+    public Pawn pawn;
+
+    public float score;
+
+    
+
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -22,4 +27,15 @@ public abstract class Controller : MonoBehaviour
     }
     //Our child classes MUST override the way the process inputs
     public abstract void ProcessInputs();
+
+    //Add to the scoring
+    public virtual void AddToScore(float scoreToAdd)
+    { 
+        score += scoreToAdd; 
+    }
+   
+
+
 }
+
+

@@ -4,4 +4,6 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
+    public PlayerSpawner nextWaypoint;
+        
 }

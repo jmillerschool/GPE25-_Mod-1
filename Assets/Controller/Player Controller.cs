@@ -12,6 +12,8 @@ public class PlayerController : Controller
     public KeyCode rotateCounterClockwiseKey;
     public KeyCode shootkey;
 
+    
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -25,20 +27,22 @@ public class PlayerController : Controller
                 GameManager.instance.player.Add(this);
             }
         }
-        
+
         // Run the Start() function from the parent (base) class
         base.Start();
+
+        score = 0;
     }
 
     // Update is called once per frame
     public override void Update()
     {
         //Process our KeyBoard Input
-        ProcessInputs();    
+        ProcessInputs();
 
         //Run the Update() function from the parent (base) class
         base.Update();
-       
+
     }
     public override void ProcessInputs()
     {
@@ -52,8 +56,8 @@ public class PlayerController : Controller
             pawn.MoveBackward();
             pawn.MakeNoise();
         }
-        if (Input.GetKey(rotateClockwiseKey)) 
-        { 
+        if (Input.GetKey(rotateClockwiseKey))
+        {
             pawn.RotateClockwise();
             pawn.MakeNoise();
         }
@@ -67,7 +71,7 @@ public class PlayerController : Controller
             pawn.Shoot();
             pawn.MakeNoise();
         }
-        if(!Input.GetKey(moveForwardKey) && !Input.GetKey(moveBackwardKey) && !Input.GetKey(rotateClockwiseKey) && !Input.GetKey(rotateCounterClockwiseKey) && !Input.GetKeyDown(shootkey))
+        if (!Input.GetKey(moveForwardKey) && !Input.GetKey(moveBackwardKey) && !Input.GetKey(rotateClockwiseKey) && !Input.GetKey(rotateCounterClockwiseKey) && !Input.GetKeyDown(shootkey))
         {
             pawn.StopNoise();
         }
@@ -82,4 +86,6 @@ public class PlayerController : Controller
             GameManager.instance.player.Remove(this);
         }
     }
+
+    
 }

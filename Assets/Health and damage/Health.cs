@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -8,9 +9,16 @@ public class Health : MonoBehaviour
 
     public float maxHealth;
 
+    // amount of score for death
+    public float deathScore;
+
+    //UI variable
+    public Image fillAmount;
+
     public void Die (Pawn source)
     {
         Debug.Log(" You Died ");
+
         Destroy(gameObject);
     }
 

@@ -37,6 +37,11 @@ public class CowardAI : Controller
     //Going to be recponsible for making AI Decisions
     public override void ProcessInputs()
     {
+        if (pawn == null)
+        {
+            Destroy(gameObject);
+        }
+
         switch (currentState)
         { 
             case AIState.Flee:

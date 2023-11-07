@@ -28,6 +28,9 @@ public abstract class Pawn : MonoBehaviour
     // Variable for the volume of our Noisemaker
     public float noiseMakerVolume;
 
+    // varible for the controller
+    public Controller controller;
+
     
 
     //Variable to hold our Mover

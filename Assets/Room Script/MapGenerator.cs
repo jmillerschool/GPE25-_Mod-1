@@ -25,10 +25,10 @@ public class MapGenerator : MonoBehaviour
         {
             mapSeed = DateToInt(DateTime.Now.Date);
         }
-        else if (randomMap)
-        {
-            mapSeed = DateToInt(DateTime.Now);
-        }
+        //else if (randomMap)
+        //{
+          //  mapSeed = DateToInt(DateTime.Now);
+       // }
 
         UnityEngine.Random.InitState(mapSeed);
     }
