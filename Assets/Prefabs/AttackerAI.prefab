@@ -136,8 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708b11d6e8650b348895cd8671760f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 30
+  maxHealth: 30
+  deathScore: 1
   fillAmount: {fileID: 0}
 --- !u!114 &8755520129449130441
 MonoBehaviour:
@@ -250,4 +251,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
+  deathScore: 0
   fillAmount: {fileID: 0}

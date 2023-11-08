@@ -61,48 +61,6 @@ public class GameManager : MonoBehaviour
 
         // Set the correct state at the start of the game
         ActivateTitleScreen();
-
-        mapGenerator = GetComponent<MapGenerator>();
-
-        mapGenerator.GenerateMap();
-
-        spawnPoints = FindObjectsOfType<PlayerSpawner>();
-
-        foreach(PlayerSpawner p in spawnPoints)
-        {
-            Debug.Log(p.gameObject.name);
-
-        }
-
-
-        // spawn the patrol ai
-        SpawnPatrolAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        // spawn the guard ai
-        SpawnGuardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        //spawn the attacker ai
-        SpawnAttackerAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        // Spawn the coward ai
-        SpawnCowardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        // spawn the patrol ai
-        SpawnPatrolAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        // spawn the guard ai
-        SpawnGuardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        //spawn the attacker ai
-        SpawnAttackerAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        // Spawn the coward ai
-        SpawnCowardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        //Spawn the Player Tank
-        SpawnPlayer(spawnPoints[Random.Range(0, spawnPoints.Length)]);
-
-        
     }
 
     // Awake is called when the objct is first created - before even Start can Run!
@@ -299,6 +257,47 @@ public class GameManager : MonoBehaviour
         
         // Activate the Gameplay 
         GameplayStateObject.SetActive(true);
+
+        mapGenerator = GetComponent<MapGenerator>();
+
+        mapGenerator.GenerateMap();
+
+        spawnPoints = FindObjectsOfType<PlayerSpawner>();
+
+        foreach (PlayerSpawner p in spawnPoints)
+        {
+            Debug.Log(p.gameObject.name);
+
+        }
+
+
+        // spawn the patrol ai
+        SpawnPatrolAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // spawn the guard ai
+        SpawnGuardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        //spawn the attacker ai
+        SpawnAttackerAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // Spawn the coward ai
+        SpawnCowardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // spawn the patrol ai
+        SpawnPatrolAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // spawn the guard ai
+        SpawnGuardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        //spawn the attacker ai
+        SpawnAttackerAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // Spawn the coward ai
+        SpawnCowardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        //Spawn the Player Tank
+        SpawnPlayer(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
     }
 
     public void ActivateGameOverScreen()

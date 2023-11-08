@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
 
     //UI variable
     public Image fillAmount;
+   
 
     public void Die (Pawn source)
     {
@@ -27,6 +28,8 @@ public class Health : MonoBehaviour
         currentHealth = currentHealth - amount;
         Debug.Log(source.name + " did " + amount + " damage to " + gameObject.name);
         currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
+
+        //Image.fillAmount = currentHealth;
         
         if (currentHealth <= 0)
         {
