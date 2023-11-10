@@ -43,6 +43,11 @@ public class PlayerController : Controller
         //Run the Update() function from the parent (base) class
         base.Update();
 
+        if (pawn == null)
+        {
+            Destroy(this);
+        }
+
     }
     public override void ProcessInputs()
     {

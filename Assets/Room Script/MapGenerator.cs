@@ -18,6 +18,7 @@ public class MapGenerator : MonoBehaviour
     public bool mapOfTheDay;
     public bool randomMap;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +26,10 @@ public class MapGenerator : MonoBehaviour
         {
             mapSeed = DateToInt(DateTime.Now.Date);
         }
-        //else if (randomMap)
-        //{
-          //  mapSeed = DateToInt(DateTime.Now);
-       // }
+        else if (randomMap)
+        {
+            mapSeed = DateToInt(DateTime.Now);
+        }
 
         UnityEngine.Random.InitState(mapSeed);
     }

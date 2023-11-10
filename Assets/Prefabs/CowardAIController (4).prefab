@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 815828849183734874, guid: 4af8e41ef2032c548a4a6598289f90af, type: 3}
+  score: 0
   currentState: 4
   target: {fileID: 0}
   fleeDistance: 2
@@ -52,3 +53,4 @@ MonoBehaviour:
   waypointStopDistance: 0
   hearingDistance: 55
   fieldOfView: 60
+  tankPawn: {fileID: 815828849183734874, guid: 4af8e41ef2032c548a4a6598289f90af, type: 3}

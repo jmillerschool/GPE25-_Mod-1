@@ -6,12 +6,17 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    //public Transform playerSpawnTransform;
+    public Transform playerSpawnTransform;
+    public Transform playerSpawnTransformTwo;
 
     //Prefabs
     public GameObject playerControllerPrefab;
+    public GameObject playerControllerPrefabTwo;
     public GameObject tankPawnPrefab;
-    public GameObject ShellPrefab;
+    public GameObject VStankPawnPrefabOne;
+    public GameObject VStankPawnPrefabTwo;
+
+
 
     public GameObject patrolAIControllerPrefab;
     public GameObject attackerAIControllerPrefab;
@@ -22,6 +27,11 @@ public class GameManager : MonoBehaviour
     public GameObject attackerAIPawnPrefab;
     public GameObject guardAIPawnPrefab;
     public GameObject cowardAIPawnPrefab;
+
+    public GameObject cameraPlayer1;
+    public GameObject cameraPlayer2;
+
+    
 
     //List that holds our player(s)
     public List<PlayerController> player;
@@ -43,6 +53,7 @@ public class GameManager : MonoBehaviour
     public GameObject OptionsScreenStateObject;
     public GameObject CreditsScreenStateObject;
     public GameObject GameplayStateObject;
+    public GameObject GameplayStateObject2;
     public GameObject GameOverScreenStateObject;
 
     public PlayerSpawner[] spawnPoints;
@@ -88,7 +99,65 @@ public class GameManager : MonoBehaviour
               
     }
 
+    public void SpawnPlayerOne()
+    {
+        // Spawn the Player Controller at (0,0,0) with no rotation
+        GameObject newPlayerObj = Instantiate(playerControllerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
+        //Spawn the Pawn and connect it to the Controller
+        GameObject newPawnObj = Instantiate(VStankPawnPrefabOne, playerSpawnTransform.transform.position, playerSpawnTransform.transform.rotation) as GameObject;
+
+        // Get the Player Controller component and Pawn component
+        Controller newController = newPlayerObj.GetComponent<Controller>();
+        Pawn newPawn = newPawnObj.GetComponent<Pawn>();
+
+        //test intialalization
+        newPawn.damageDone = 10.0f;
+
+        newPawnObj.AddComponent<NoiseMaker>();
+        newPawn.noiseMaker = newPawnObj.GetComponent<NoiseMaker>();
+        newPawn.noiseMakerVolume = 3;
+
+        newPawnObj.AddComponent<PowerupManager>();
+
+        //Hook them up!
+        newController.pawn = newPawn;
+        newPawn.controller = newController;
+
+        
+        cameraPlayer1.transform.parent = newPawnObj.transform;
+    }
+
+    public void SpawnPlayerTwo()
+    {
+        // Spawn the Player Controller at (0,0,0) with no rotation
+        GameObject newPlayerObj = Instantiate(playerControllerPrefabTwo, Vector3.zero, Quaternion.identity) as GameObject;
+
+        //Spawn the Pawn and connect it to the Controller
+        GameObject newPawnObj = Instantiate(VStankPawnPrefabTwo, playerSpawnTransformTwo.transform.position, playerSpawnTransformTwo.transform.rotation) as GameObject;
+
+        // Get the Player Controller component and Pawn component
+        Controller newController = newPlayerObj.GetComponent<Controller>();
+        Pawn newPawn = newPawnObj.GetComponent<Pawn>();
+
+        //test intialalization
+        newPawn.damageDone = 10.0f;
+
+        newPawnObj.AddComponent<NoiseMaker>();
+        newPawn.noiseMaker = newPawnObj.GetComponent<NoiseMaker>();
+        newPawn.noiseMakerVolume = 3;
+
+        newPawnObj.AddComponent<PowerupManager>();
+
+        //Hook them up!
+        newController.pawn = newPawn;
+        newPawn.controller = newController;
+
+
+        cameraPlayer2.transform.parent = newPawnObj.transform;
+
+        
+    }
 
     public void SpawnPlayer(PlayerSpawner spawnPoint)
     {
@@ -114,6 +183,8 @@ public class GameManager : MonoBehaviour
         //Hook them up!
         newController.pawn = newPawn;
         newPawn.controller = newController;
+
+        
     }
     
     public void SpawnPatrolAI(PlayerSpawner spawnPoint)
@@ -209,6 +280,7 @@ public class GameManager : MonoBehaviour
         OptionsScreenStateObject.SetActive(false);
         CreditsScreenStateObject.SetActive(false);
         GameplayStateObject.SetActive(false);
+        GameplayStateObject2.SetActive(false);
         GameOverScreenStateObject.SetActive(false);
     }
 
@@ -254,6 +326,8 @@ public class GameManager : MonoBehaviour
     {
         // Deactivate all states
         DeactivateAllStates();
+
+
         
         // Activate the Gameplay 
         GameplayStateObject.SetActive(true);
@@ -297,6 +371,60 @@ public class GameManager : MonoBehaviour
 
         //Spawn the Player Tank
         SpawnPlayer(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        //SpawnPlayerOne();
+
+    }
+    public void ActivateGameplay2()
+    {
+        // Deactivate all states
+        DeactivateAllStates();
+
+
+
+        // Activate the Gameplay 
+        GameplayStateObject2.SetActive(true);
+
+        mapGenerator = GetComponent<MapGenerator>();
+
+        mapGenerator.GenerateMap();
+
+        spawnPoints = FindObjectsOfType<PlayerSpawner>();
+
+        foreach (PlayerSpawner p in spawnPoints)
+        {
+            Debug.Log(p.gameObject.name);
+
+        }
+
+
+        // spawn the patrol ai
+        SpawnPatrolAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // spawn the guard ai
+        SpawnGuardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        //spawn the attacker ai
+        SpawnAttackerAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // Spawn the coward ai
+        SpawnCowardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // spawn the patrol ai
+        SpawnPatrolAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // spawn the guard ai
+        SpawnGuardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        //spawn the attacker ai
+        SpawnAttackerAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+        // Spawn the coward ai
+        SpawnCowardAI(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+
+       
+        SpawnPlayerTwo();
+        SpawnPlayerOne();
 
     }
 

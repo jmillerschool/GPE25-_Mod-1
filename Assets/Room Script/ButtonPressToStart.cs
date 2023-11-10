@@ -6,7 +6,7 @@ using UnityEngine;
 public class ButtonPressToStart : MonoBehaviour
 {
     
-    public void ChangeToMainMenu ()
+    public void ChangeToMainMenu()
     {
         if (GameManager.instance != null)
         {
@@ -35,6 +35,14 @@ public class ButtonPressToStart : MonoBehaviour
         if (GameManager.instance != null)
         {
             GameManager.instance.ActivateGameplay();
+        }
+    }
+
+    public void ChangeToGameplay2()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.ActivateGameplay2();
         }
     }
 

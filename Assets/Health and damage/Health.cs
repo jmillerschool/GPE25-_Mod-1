@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     public float deathScore;
 
     //UI variable
-    public Image fillAmount;
+    public Image HealthKnob;
    
 
     public void Die (Pawn source)
@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
         Debug.Log(source.name + " did " + amount + " damage to " + gameObject.name);
         currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 
-        //Image.fillAmount = currentHealth;
+        HealthKnob.fillAmount = currentHealth / maxHealth;
         
         if (currentHealth <= 0)
         {
@@ -48,8 +48,9 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        
-        
+
+        HealthKnob.fillAmount = currentHealth / maxHealth;
+
     }
     
     
@@ -59,6 +60,8 @@ public class Health : MonoBehaviour
     {
         // set Health to max
         currentHealth = maxHealth;
+
+        HealthKnob.fillAmount = currentHealth / maxHealth;
     }
 
     // Update is called once per frame

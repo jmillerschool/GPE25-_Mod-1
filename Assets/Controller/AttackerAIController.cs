@@ -16,6 +16,8 @@ public class AttackerAI :  Controller
     private int currentWaypoint = 0;
     private float lastStateChangeTime;
 
+    public TankPawn tankPawn;
+
 
     // Start is called before the first frame update
     public override void Start()
@@ -33,6 +35,11 @@ public class AttackerAI :  Controller
 
         // Run the parent (Base) update
         base.Update();
+
+        if (tankPawn == null)
+        {
+            Destroy(this);
+        }
     }
     //Going to be recponsible for making AI Decisions
     public override void ProcessInputs()
