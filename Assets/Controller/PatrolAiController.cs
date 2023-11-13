@@ -62,7 +62,7 @@ public class PatrolAI : Controller
                     TargetPlayerOne();
                 }
 
-               ;
+               
 
                 //Check for transtions
                 if (IsCanSee(target))

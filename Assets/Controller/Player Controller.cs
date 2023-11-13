@@ -43,8 +43,11 @@ public class PlayerController : Controller
         //Run the Update() function from the parent (base) class
         base.Update();
 
+        //GameManager gman = GetComponent<GameManager>();
+
         if (pawn == null)
         {
+           // gman.ActivateGameOverScreen();
             Destroy(this);
         }
 

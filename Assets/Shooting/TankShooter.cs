@@ -30,7 +30,7 @@ public class TankShooter : Shooter
             // ... Set the damageDone ith the DamageOnHit component to ther value passed in
             doh.damageDone = damageDone;
              
-            // ...Set the owner to the pawn that shot this shell, if there is one (otherwise, owner is null).
+            // ... Set the owner to the pawn that shot this shell, if there is one (otherwise, owner is null).
             doh.owner = GetComponent<Pawn>();
         }
         // Get the shells rigidbody component
@@ -39,7 +39,7 @@ public class TankShooter : Shooter
         if (rb != null )
         {
             // ... AddForce to make it move forward
-            rb.AddForce (firepointTransform.forward * fireforce);
+            rb.AddForce(firepointTransform.forward * fireforce);
         }
 
         // Destroy it after a set time

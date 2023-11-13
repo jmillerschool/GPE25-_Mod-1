@@ -19,7 +19,6 @@ public class Health : MonoBehaviour
     public void Die (Pawn source)
     {
         Debug.Log(" You Died ");
-
         Destroy(gameObject);
     }
 
@@ -30,10 +29,10 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 
         HealthKnob.fillAmount = currentHealth / maxHealth;
-        
+
         if (currentHealth <= 0)
         {
-            Die (source);
+            Die(source);
         }
         
     }

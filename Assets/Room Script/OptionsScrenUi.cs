@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class OptionsScrenUi : MonoBehaviour
 {
     public AudioMixer mainAudioMixer;
-
-    public UnityEngine.UI.Slider mainVolumeSlider;
-
+    public Slider mainVolumeSlider;
+    
+    
+    
 
     
     // Start is called before the first frame update
@@ -18,7 +20,7 @@ public class OptionsScrenUi : MonoBehaviour
 
     }
 
-    public void OnMainVolumeChange ()
+    public void OnMainVolumeChange()
     {
         //Start with the slider value (assuming our slider runs from 0 to 1)
         float newVolume = mainVolumeSlider.value;

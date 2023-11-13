@@ -31,10 +31,11 @@ public class GameManager : MonoBehaviour
     public GameObject cameraPlayer1;
     public GameObject cameraPlayer2;
 
-    
+
 
     //List that holds our player(s)
     public List<PlayerController> player;
+    public List<Pawn> playerTarget;
 
     // list that holds our ai 
     public List<PatrolAI> AIPatrolList;
@@ -59,7 +60,9 @@ public class GameManager : MonoBehaviour
     public PlayerSpawner[] spawnPoints;
 
     public MapGenerator mapGenerator;
+    public TankPawn tPawn;
 
+    
     private void Start()
     {
         // Temp Code - For now, we spawn player as soon a sthe GameManager starts
@@ -93,10 +96,10 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called every frame, if the MonoBehaviour is enabled
-    private void Update()
+    public void Update()
     {
 
-              
+
     }
 
     public void SpawnPlayerOne()
@@ -125,7 +128,7 @@ public class GameManager : MonoBehaviour
         newPawn.controller = newController;
 
         
-        cameraPlayer1.transform.parent = newPawnObj.transform;
+        //cameraPlayer1.transform.parent = newPawnObj.transform;
     }
 
     public void SpawnPlayerTwo()
@@ -154,7 +157,7 @@ public class GameManager : MonoBehaviour
         newPawn.controller = newController;
 
 
-        cameraPlayer2.transform.parent = newPawnObj.transform;
+        //cameraPlayer2.transform.parent = newPawnObj.transform;
 
         
     }
@@ -183,7 +186,7 @@ public class GameManager : MonoBehaviour
         //Hook them up!
         newController.pawn = newPawn;
         newPawn.controller = newController;
-
+        
         
     }
     
@@ -371,9 +374,15 @@ public class GameManager : MonoBehaviour
 
         //Spawn the Player Tank
         SpawnPlayer(spawnPoints[Random.Range(0, spawnPoints.Length)]);
+        
+        //tPawn = SpawnPlayer();
 
         //SpawnPlayerOne();
-
+         if (tPawn == null)
+        {
+            ActivateGameOverScreen();
+        }
+       
     }
     public void ActivateGameplay2()
     {
@@ -426,6 +435,7 @@ public class GameManager : MonoBehaviour
         SpawnPlayerTwo();
         SpawnPlayerOne();
 
+        
     }
 
     public void ActivateGameOverScreen()

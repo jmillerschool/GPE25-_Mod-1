@@ -37,7 +37,7 @@ public class AttackerAI :  Controller
         base.Update();
 
         if (tankPawn == null)
-        {
+        {            
             Destroy(this);
         }
     }

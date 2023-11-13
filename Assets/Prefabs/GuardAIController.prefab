@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawn: {fileID: 3467056413918342216, guid: 920390cab7986e54ea52f7d235992f8e, type: 3}
-  score: 0
+  score: 1
   currentState: 2
   target: {fileID: 0}
   fleeDistance: 10

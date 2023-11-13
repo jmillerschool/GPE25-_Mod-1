@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDone: 1
-  owner: {fileID: 0}
+  owner: {fileID: 5287430839936095558, guid: ae46c98ef1ef49446aa5371597c9ddbf, type: 3}
 --- !u!82 &5364667964164053331
 AudioSource:
   m_ObjectHideFlags: 0

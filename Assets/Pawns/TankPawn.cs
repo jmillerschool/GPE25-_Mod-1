@@ -56,14 +56,22 @@ public class TankPawn : Pawn
 
     public override void RotateTowards(Vector3 targetPosition)
     {
-        // Find the Vector to our target
-        Vector3 vectorToTarget = targetPosition - transform.position;
+        if (mover != null)
+        {
+            // Find the Vector to our target
+            Vector3 vectorToTarget = targetPosition - transform.position;
 
-        // Find the rotation to look down that vector
-        Quaternion targetRotation = Quaternion.LookRotation(vectorToTarget, Vector3.up);
+            // Find the rotation to look down that vector
+            Quaternion targetRotation = Quaternion.LookRotation(vectorToTarget, Vector3.up);
 
-        // Rotate closer to that vector, but dont rotate more that our turn speed allows in one frame
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+            // Rotate closer to that vector, but dont rotate more that our turn speed allows in one frame
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Debug.LogWarning("Warning :No Mover in TankPawn.MoverForward()!");
+        }
+        
 
     }
 
